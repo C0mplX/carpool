@@ -49,13 +49,14 @@ class installDB {
 		try {
 			
 			$sql = "CREATE table IF NOT EXISTS $table(
-				ID 			INT( 11 ) AUTO_INCREMENT PRIMARY KEY, 
-				user_ID		INT( 11 ) NOT NULL, 
-				location 	VARCHAR ( 256 ) NOT NULL, 
-				r_header 	VARCHAR( 100 ) NOT NULL, 
-				r_body 		MEDIUMTEXT NOT NULL,
-				r_type 		VARCHAR( 256 ) NOT NULL, 
-				create_date DATETIME NOT NULL );";
+				ID 				INT( 11 ) AUTO_INCREMENT PRIMARY KEY, 
+				user_ID			INT( 11 ) NOT NULL, 
+				to_location 	VARCHAR ( 256 ) NOT NULL, 
+				from_location 	VARCHAR ( 256 ) NOT NULL, 
+				r_header 		VARCHAR( 100 ) NOT NULL, 
+				r_body 			MEDIUMTEXT NOT NULL,
+				r_type 			VARCHAR( 256 ) NOT NULL, 
+				create_date 	DATETIME NOT NULL );";
 		
 		$this->db->exec( $sql );
 		print('TABLE $table INSTALLED </br>');
