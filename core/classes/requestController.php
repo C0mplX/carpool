@@ -22,6 +22,8 @@ class requestController {
 			case 'get':
 				$this->scope = $this->get_data_request();
 				break;
+			case 'get_id':
+				$this->scope = $this->get_data_request_id();
 			default:
 				# code...
 				break;
@@ -50,9 +52,24 @@ class requestController {
 	}
 
 	private function get_data_request() {
-		$query = $this->db->prepare( "SELECT * FROM requests WHERE user_ID = ? OR ID = ?" );
+		$query = $this->db->prepare( "SELECT * FROM requests WHERE ID = ?" );
 		$query->bindValue( 1, $this->clean_data( $this->userID ) );
-		$query->bindValue( 2, $this->clean_data( $this->userID ) );
+
+		try {
+			
+			$query->execute();
+			$result = $query->fetch();
+
+			return $result;
+
+		} catch (PDOexception $e) {
+			die( $e->getMessage() );
+		}
+	}
+
+	private function get_data_request_id() {
+		$query = $this->db->prepare( "SELECT * FROM requests WHERE user_ID = ?" );
+		$query->bindValue( 1, $this->clean_data( $this->userID ) );
 
 		try {
 			
@@ -97,7 +114,10 @@ class requestController {
 		return $id;
 	}
 
- 
+	public function get_r_type() {
+		$type = $this->clean_data( $this->scope['r_type'] );
+		return ucfirst($type);
+	}
 	
 	/**
 	*

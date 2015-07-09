@@ -1,3 +1,24 @@
 .panel-margin {
 	margin-top: 20px;
 }
+
+.card {
+
+	background-color: #fafafa;
+	border: 1px solid #7f8c8d;
+	width: 100%;
+	margin-top: 20%;
+	height: 100%;
+	padding: 20px 50px 50px 50px;
+
+}
+
+.sendRequestView {
+	position: fixed;
+	z-index: 1000;
+	width: 200px;
+	height: 200px;
+	background-color: #fafafa;
+	border: 1px solid #7f8c8d;
+	padding: 20px 50px 50px 50px;
+}
